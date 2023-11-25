@@ -1,22 +1,36 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/confirm.css' %}">
 </head>
 <body>
-  {% if error %}
-      <p>{{error}}</p>
-      <a>Попробуйте снова</a>
-  {% else %}
-      <p>Вы заказали на сумму - {{price}}</p>
-      <p>Ваш заказ - {{check_list}}
-      <form method="POST" novalidate>
-          {% csrf_token %}
-          {{form.as_p}}
-          <input type="submit" value="Заказать"/>
-          <p>Оплата будет производиться наличным у курьера либо же на месте получения еды</p>
-      </form>
-  {% endif %}
+    <nav class="navbar">
+        <div class="menu">
+            <h3 class="logo">Company<span>name</span></h3>
+            <div class="burger">
+                <div class="bar">
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="Opl">
+        {% if error %}
+            <p>{{error}}</p>
+            <a>Попробуйте снова</a>
+        {% else %}
+            <p>Вы заказали на сумму - {{price}}</p>
+            <p>Ваш заказ - {{check_list}}
+            <form method="POST" novalidate>
+        {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Заказать"/>
+            <p>Оплата будет производиться наличным у курьера либо же на месте получения еды</p>
+            </form>
+        {% endif %}
+    </div>
 </body>
 </html>
