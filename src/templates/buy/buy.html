@@ -1,18 +1,34 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/buy.css' %}">
 </head>
 <body>
-    {% for elem in elems %}
-            <img src="{{ elem.photo.url }}">
-            <p>{{elem.title}}</p>
-            <p>Цена - {{elem.price}}</p>
-            <p>Осталось порций - {{elem.count}}</p>
-            <a href="/buy/2/{{elem.id_food}}">Выбрать</a>
-    {% endfor %}
-        <br>
-    <a href="/buy/2/0">Пропустить</a>
+    <nav class="navbar">
+        <div class="menu">
+            <h3 class="logo">Company<span>name</span></h3>
+            <div class="burger">
+                <div class="bar">
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="eda">
+        {% for elem in elems %}
+            <div class="dish">
+                <img src="{{ elem.photo.url }}">
+                <p>{{elem.title}}</p>
+                <p>Цена - {{elem.price}}</p>
+                <p>Осталось порций - {{elem.count}}</p>
+                <a href="/buy/2/{{elem.id_food}}"><button>Выбрать</button></a>
+            </div>
+        {% endfor %}
+            <br>
+        <a href="/buy/2/0" class="miss"><button>Пропустить</button></a>
+    </div>
 </body>
 </html>
